@@ -1,6 +1,5 @@
 package com.appdefine.uber.uberApp.strategies;
 
-import com.appdefine.uber.uberApp.dto.RideRequestDto;
 import com.appdefine.uber.uberApp.entities.Driver;
 import com.appdefine.uber.uberApp.entities.RideRequest;
 

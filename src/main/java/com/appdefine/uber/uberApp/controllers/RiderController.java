@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/rider")
+@RequestMapping("/riders")
 @RequiredArgsConstructor
 public class RiderController {
 
@@ -18,6 +18,7 @@ public class RiderController {
 
     @PostMapping("/requestRide")
     public ResponseEntity<RideRequestDto> requestRide(@RequestBody RideRequestDto rideRequestDto){
-        return ResponseEntity.ok(riderService.requestRide(rideRequestDto));
+        RideRequestDto rideRequestDto1 = riderService.requestRide(rideRequestDto);
+        return ResponseEntity.ok(rideRequestDto1);
     }
 }

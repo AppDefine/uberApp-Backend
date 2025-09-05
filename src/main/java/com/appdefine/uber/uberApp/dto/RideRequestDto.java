@@ -6,7 +6,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.awt.*;
 import java.time.LocalDateTime;
 
 @Data
@@ -23,6 +22,7 @@ public class RideRequestDto {
     private LocalDateTime requestedTime;
 
     private RiderDto rider;
+    private Double fare;
 
     private RideRequestStatus rideRequestStatus;
 }

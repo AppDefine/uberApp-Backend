@@ -2,7 +2,6 @@ package com.appdefine.uber.uberApp.configs;
 
 import com.appdefine.uber.uberApp.dto.PointDto;
 import com.appdefine.uber.uberApp.utils.GeometryUtil;
-import org.locationtech.jts.geom.Coordinate;
 import org.locationtech.jts.geom.Point;
 import org.modelmapper.ModelMapper;
 import org.springframework.context.annotation.Bean;
