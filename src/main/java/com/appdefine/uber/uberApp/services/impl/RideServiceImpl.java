@@ -4,6 +4,7 @@ import com.appdefine.uber.uberApp.dto.RideRequestDto;
 import com.appdefine.uber.uberApp.entities.Driver;
 import com.appdefine.uber.uberApp.entities.Ride;
 import com.appdefine.uber.uberApp.entities.RideRequest;
+import com.appdefine.uber.uberApp.entities.Rider;
 import com.appdefine.uber.uberApp.entities.enums.RideRequestStatus;
 import com.appdefine.uber.uberApp.entities.enums.RideStatus;
 import com.appdefine.uber.uberApp.exceptions.ResourceNotFoundException;
@@ -14,6 +15,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.Random;
@@ -30,11 +32,6 @@ public class RideServiceImpl implements RideService {
     public Ride getRideById(Long rideId) {
         return rideRepository.findById(rideId)
                 .orElseThrow(() -> new ResourceNotFoundException("Ride not found with id: "+rideId));
-    }
-
-    @Override
-    public void matchWithDrivers(RideRequestDto rideRequestDto) {
-
     }
 
     @Override
@@ -58,13 +55,13 @@ public class RideServiceImpl implements RideService {
     }
 
     @Override
-    public Page<Ride> getAllRidesOfRider(Long rideId, PageRequest pageRequest) {
-        return null;
+    public Page<Ride> getAllRidesOfRider(Rider rider, PageRequest pageRequest) {
+        return rideRepository.findByRider(rider, pageRequest);
     }
 
     @Override
-    public Page<Ride> getAllRidesOfDriver(Long driverId, PageRequest pageRequest) {
-        return null;
+    public Page<Ride> getAllRidesOfDriver(Driver driver, PageRequest pageRequest) {
+        return rideRepository.findByDriver(driver, pageRequest);
     }
 
     private String generateRandomOTP(){
