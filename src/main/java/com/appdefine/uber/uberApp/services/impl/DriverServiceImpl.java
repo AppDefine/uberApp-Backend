@@ -2,6 +2,7 @@ package com.appdefine.uber.uberApp.services.impl;
 
 import com.appdefine.uber.uberApp.dto.DriverDto;
 import com.appdefine.uber.uberApp.dto.RideDto;
+import com.appdefine.uber.uberApp.dto.RiderDto;
 import com.appdefine.uber.uberApp.entities.Driver;
 import com.appdefine.uber.uberApp.entities.Ride;
 import com.appdefine.uber.uberApp.entities.RideRequest;
@@ -123,7 +124,7 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public RideDto rateRider(Long rideId, Integer rating) {
+    public RiderDto rateRider(Long rideId, Integer rating) {
         return null;
     }
 
@@ -149,6 +150,11 @@ public class DriverServiceImpl implements DriverService {
     @Override
     public Driver updateDriverAvailability(Driver driver, boolean available) {
         driver.setAvailable(available);
+        return driverRepository.save(driver);
+    }
+
+    @Override
+    public Driver createNewDriver(Driver driver) {
         return driverRepository.save(driver);
     }
 }
