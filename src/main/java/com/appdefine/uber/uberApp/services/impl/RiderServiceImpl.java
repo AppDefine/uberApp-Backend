@@ -1,5 +1,6 @@
 package com.appdefine.uber.uberApp.services.impl;
 
+import com.appdefine.uber.uberApp.configs.SecurityConfig;
 import com.appdefine.uber.uberApp.dto.DriverDto;
 import com.appdefine.uber.uberApp.dto.RideDto;
 import com.appdefine.uber.uberApp.dto.RideRequestDto;
@@ -19,6 +20,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -121,7 +123,8 @@ public class RiderServiceImpl implements RiderService {
 
     @Override
     public Rider getCurrentRider() {
-        //todo
-        return riderRepository.findById(1L).orElseThrow(() -> new ResourceNotFoundException("Rider not found with id: "+1));
+        User user = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return riderRepository.findByUser(user)
+                .orElseThrow(() -> new ResourceNotFoundException("Rider not associated with user with id: "+user.getId()));
     }
 }
