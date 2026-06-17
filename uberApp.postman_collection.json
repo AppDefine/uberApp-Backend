@@ -1,0 +1,623 @@
+{
+  "info": {
+    "_postman_id": "588e8b03-faed-408b-9673-04ee812abffb",
+    "name": "uberApp",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "47643725",
+    "_collection_link": "https://go.postman.co/collection/47643725-588e8b03-faed-408b-9673-04ee812abffb?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "auth",
+      "item": [
+        {
+          "name": "auth/signup",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"test@gmail.com\",\n    \"password\": \"test\",\n    \"name\": \"test\",\n    \"roles\": [\"User\"],\n    \"permissions\": [\"POST_VIEW\", \"USER_VIEW\"]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}auth/signup",
+              "host": [
+                "{{baseurl}}auth"
+              ],
+              "path": [
+                "signup"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/auth/signup' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"email\": \"ram@gmail.com\",\n    \"password\": \"ram\",\n    \"name\": \"Ram\",\n    \"roles\": [\"User\"],\n    \"permissions\": [\"POST_VIEW\", \"USER_VIEW\"]\n}'"
+          },
+          "response": []
+        },
+        {
+          "name": "auth/login",
+          "request": {
+            "auth": {
+              "type": "noauth"
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"email\": \"test@gmail.com\",\n    \"password\": \"test\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}auth/login",
+              "host": [
+                "{{baseurl}}auth"
+              ],
+              "path": [
+                "login"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/auth/login' \\\n--header 'Content-Type: application/json' \\\n--data-raw '{\n    \"email\": \"ram@gmail.com\",\n    \"password\": \"ram\"\n}'"
+          },
+          "response": []
+        },
+        {
+          "name": "auth/refresh",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Cookie",
+                "value": "refreshToken=eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiI0MSIsImVtYWlsIjoicmFtMUBnbWFpbC5jb20iLCJyb2xlcyI6IltSSURFUl0iLCJpYXQiOjE3ODEzNjE5MjAsImV4cCI6MTc4MTM2MjUyMH0.Df_ShcHao2-yxg-y4NXEg8UDnKkBPd3ReI2PTAyHNjUZGpzX8aL-LTQjHFCmje5m"
+              }
+            ],
+            "url": {
+              "raw": "{{baseurl}}auth/refresh",
+              "host": [
+                "{{baseurl}}auth"
+              ],
+              "path": [
+                "refresh"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/auth/refresh' \\\n--header 'Content-Type: application/json' \\\n--cookie 'refreshToken=<YOUR_REFRESH_TOKEN>'"
+          },
+          "response": []
+        },
+        {
+          "name": "auth/onBoardNewDriver/1",
+          "request": {
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiI0NSIsImVtYWlsIjoidGVzdDJAZ21haWwuY29tIiwicm9sZXMiOiJbQURNSU5dIiwiaWF0IjoxNzgxMzY1NzE5LCJleHAiOjE3ODE0NTIxMTl9.oKWZd32htJmneBD8blG2xtuoeDvr-3p83LcqjkUCukmwLjHYyDsDBPZoxy8ljw_X",
+                  "type": "string"
+                }
+              ]
+            },
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json",
+                "type": "text"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"vehicleId\": \"GJ01AB1234\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}auth/onBoardNewDriver/43",
+              "host": [
+                "{{baseurl}}auth"
+              ],
+              "path": [
+                "onBoardNewDriver",
+                "43"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/auth/onBoardNewDriver/1' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \\\n--data-raw '{\n    \"vehicleId\": \"MH12AB1234\"\n}'"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "drivers",
+      "item": [
+        {
+          "name": "drivers/acceptRide/1",
+          "request": {
+            "method": "POST",
+            "header": [],
+            "url": {
+              "raw": "{{baseurl}}drivers/acceptRide/1",
+              "host": [
+                "{{baseurl}}drivers"
+              ],
+              "path": [
+                "acceptRide",
+                "1"
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request POST 'http://localhost:8080/drivers/acceptRide/1' \\\n--header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>'"
+          },
+          "response": []
+        },
+        {
+          "name": "drivers/startRide/1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <YOUR_ACCESS_TOKEN>"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"otp\": \"6558\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}drivers/startRide/1",
+              "host": [
+                "{{baseurl}}drivers"
+              ],
+              "path": [
+                "startRide",
+                "1"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/drivers/startRide/1' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \\\n--data-raw '{\n    \"otp\": \"1234\"\n}'"
+          },
+          "response": []
+        },
+        {
+          "name": "drivers/endRide/1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer <YOUR_ACCESS_TOKEN>"
+              }
+            ],
+            "url": {
+              "raw": "{{baseurl}}drivers/endRide/1",
+              "host": [
+                "{{baseurl}}drivers"
+              ],
+              "path": [
+                "endRide",
+                "1"
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request POST 'http://localhost:8080/drivers/endRide/1' \\\n--header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>'"
+          },
+          "response": []
+        },
+        {
+          "name": "drivers/cancelRide/1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer <YOUR_ACCESS_TOKEN>"
+              }
+            ],
+            "url": {
+              "raw": "{{baseurl}}drivers/cancelRide/1",
+              "host": [
+                "{{baseurl}}drivers"
+              ],
+              "path": [
+                "cancelRide",
+                "1"
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request POST 'http://localhost:8080/drivers/cancelRide/1' \\\n--header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>'"
+          },
+          "response": []
+        },
+        {
+          "name": "drivers/rateRider",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <YOUR_ACCESS_TOKEN>"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"rideId\": 1,\n    \"rating\": 4.5\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}drivers/rateRider",
+              "host": [
+                "{{baseurl}}drivers"
+              ],
+              "path": [
+                "rateRider"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/drivers/rateRider' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \\\n--data-raw '{\n    \"rideId\": 1,\n    \"rating\": 4.5\n}'"
+          },
+          "response": []
+        },
+        {
+          "name": "drivers/getMyProfile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer <YOUR_ACCESS_TOKEN>"
+              }
+            ],
+            "url": {
+              "raw": "{{baseurl}}drivers/getMyProfile",
+              "host": [
+                "{{baseurl}}drivers"
+              ],
+              "path": [
+                "getMyProfile"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/drivers/getMyProfile' \\\n--header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>'"
+          },
+          "response": []
+        },
+        {
+          "name": "drivers/getMyRides?pageOffset=0&pageSize=10",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer <YOUR_ACCESS_TOKEN>"
+              }
+            ],
+            "url": {
+              "raw": "{{baseurl}}drivers/getMyRides?pageOffset=0&pageSize=10",
+              "host": [
+                "{{baseurl}}drivers"
+              ],
+              "path": [
+                "getMyRides"
+              ],
+              "query": [
+                {
+                  "key": "pageOffset",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/drivers/getMyRides?pageOffset=0&pageSize=10' \\\n--header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>'"
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiI0MyIsImVtYWlsIjoidGVzdEBnbWFpbC5jb20iLCJyb2xlcyI6IltSSURFUiwgRFJJVkVSXSIsImlhdCI6MTc4MTM2NjM4MSwiZXhwIjoxNzgxNDUyNzgxfQ.6PrPZSkwsV7rH_NNWqqIi4KQxJmtklYcp8JUd7aioSAjb9xuPLjf-Ulz2xp7yRQW",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "name": "riders",
+      "item": [
+        {
+          "name": "riders/requestRide",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <YOUR_ACCESS_TOKEN>"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"dropOffLocation\": {\n        \"coordinates\": [\n            74.1213,\n            28.234123\n        ]\n    },\n    \"pickupLocation\": {\n        \"coordinates\": [\n            74.221323,\n            28.33423123\n        ]\n    },\n    \"paymentMethod\": \"WALLET\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}riders/requestRide",
+              "host": [
+                "{{baseurl}}riders"
+              ],
+              "path": [
+                "requestRide"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/riders/requestRide' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \\\n--data-raw '{\n    \"pickupLocation\": {\n        \"latitude\": 18.5204,\n        \"longitude\": 73.8567\n    },\n    \"dropOffLocation\": {\n        \"latitude\": 18.5314,\n        \"longitude\": 73.8446\n    }\n}'"
+          },
+          "response": []
+        },
+        {
+          "name": "riders/cancelRide/1",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer <YOUR_ACCESS_TOKEN>"
+              }
+            ],
+            "url": {
+              "raw": "{{baseurl}}riders/cancelRide/1",
+              "host": [
+                "{{baseurl}}riders"
+              ],
+              "path": [
+                "cancelRide",
+                "1"
+              ]
+            },
+            "description": "Generated from cURL: curl --location --request POST 'http://localhost:8080/riders/cancelRide/1' \\\n--header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>'"
+          },
+          "response": []
+        },
+        {
+          "name": "riders/rateDriver",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer <YOUR_ACCESS_TOKEN>"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"rideId\": 1,\n    \"rating\": 4.8\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "{{baseurl}}riders/rateDriver",
+              "host": [
+                "{{baseurl}}riders"
+              ],
+              "path": [
+                "rateDriver"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/riders/rateDriver' \\\n--header 'Content-Type: application/json' \\\n--header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>' \\\n--data-raw '{\n    \"rideId\": 1,\n    \"rating\": 4.8\n}'"
+          },
+          "response": []
+        },
+        {
+          "name": "riders/getMyProfile",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer <YOUR_ACCESS_TOKEN>"
+              }
+            ],
+            "url": {
+              "raw": "{{baseurl}}riders/getMyProfile",
+              "host": [
+                "{{baseurl}}riders"
+              ],
+              "path": [
+                "getMyProfile"
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/riders/getMyProfile' \\\n--header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>'"
+          },
+          "response": []
+        },
+        {
+          "name": "riders/getMyRides?pageOffset=0&pageSize=10",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer <YOUR_ACCESS_TOKEN>"
+              }
+            ],
+            "url": {
+              "raw": "{{baseurl}}riders/getMyRides?pageOffset=0&pageSize=10",
+              "host": [
+                "{{baseurl}}riders"
+              ],
+              "path": [
+                "getMyRides"
+              ],
+              "query": [
+                {
+                  "key": "pageOffset",
+                  "value": "0"
+                },
+                {
+                  "key": "pageSize",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Generated from cURL: curl --location 'http://localhost:8080/riders/getMyRides?pageOffset=0&pageSize=10' \\\n--header 'Authorization: Bearer <YOUR_ACCESS_TOKEN>'"
+          },
+          "response": []
+        }
+      ],
+      "auth": {
+        "type": "bearer",
+        "bearer": [
+          {
+            "key": "token",
+            "value": "eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiI0NCIsImVtYWlsIjoidGVzdDFAZ21haWwuY29tIiwicm9sZXMiOiJbUklERVJdIiwiaWF0IjoxNzgxMzY2MzAwLCJleHAiOjE3ODE0NTI3MDB9.AdIE02NtdWRb5LkVl_2yKrubBq5i_08nfhXncBJxyInV_aLXnT2fv2cJgdzSzHzZ",
+            "type": "string"
+          }
+        ]
+      },
+      "event": [
+        {
+          "listen": "prerequest",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        },
+        {
+          "listen": "test",
+          "script": {
+            "type": "text/javascript",
+            "packages": {},
+            "requests": {},
+            "exec": [
+              ""
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "",
+        "type": "string"
+      }
+    ]
+  },
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseurl",
+      "value": "http://localhost:8080/"
+    }
+  ]
+}
